@@ -1,0 +1,7 @@
+src/.fb_poster/
+src/__pycache__/
+src/.env
+imagenes/*
+procesadas/*
+!imagenes/.gitkeep
+!procesadas/.gitkeep

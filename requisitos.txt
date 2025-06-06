@@ -1,0 +1,6 @@
+pystray
+pillow
+python-dotenv
+requests
+google-generativeai
+plyer
