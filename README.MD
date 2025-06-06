@@ -4,7 +4,7 @@
 1. Genera un descripción para una imagen usando Gemini
 2. Genera un post automatico empleando la API de Meta
 3. Crea un botón minimizado para poder tener la app en segundo plano disponible
-=====
+======
 
 #Propiedades
 El archivo .env dentro de la carpeta src
