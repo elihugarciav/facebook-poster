@@ -8,8 +8,9 @@
 
 
 # Propiedades
-El archivo .env dentro de la carpeta src
+El archivo .env.example dentro de la carpeta src
 requiere que se den valores a las siguientes Propiedades
+y después borrar la extensión .example al archivo para que este listo a ser usado
 
 |Propiedades|
 |-----------|
