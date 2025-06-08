@@ -15,7 +15,7 @@ def generaDescIma(nombre_imagen, prompt):
     model = gemini.GenerativeModel(modelo_empleado)
 
     imagen = PIL.Image.open(pathlib.Path(nombre_imagen))
-
+    
     try:
         response = model.generate_content([prompt, imagen])
         if response.text:
