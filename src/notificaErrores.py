@@ -1,6 +1,13 @@
 from plyer import notification
 
-def realizaNotificacion(mensaje):
+def validaLongMensaje(mensaje):
+    if len(mensaje) > 255:
+        print("texto supera caracteres permitidos:\n",mensaje)
+        mensaje = mensaje[:256]
+    return mensaje
+
+def notificaError(mensaje):
+    mensaje = validaLongMensaje(mensaje=mensaje)
     notification.notify(
             title="Error",
             message=mensaje,
@@ -8,6 +15,7 @@ def realizaNotificacion(mensaje):
         )
     
 def notificaExito(titulo, mensaje):
+    mensaje = validaLongMensaje(mensaje=mensaje)
     notification.notify(
         title=titulo,
         message=mensaje,

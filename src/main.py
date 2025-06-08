@@ -20,7 +20,7 @@ def ejecutarAmbiente():
         python_bin = os.path.join(VENV_DIRECTORIO, "bin", "python")
     print(python_bin)
     if not os.path.exists(python_bin):
-        notificaErrores.realizaNotificacion(mensaje="No se encontro el ejecutable del entorno virtual")
+        notificaErrores.notificaError(mensaje="No se encontro el ejecutable del entorno virtual")
         sys.exit(1)
 
     reqDir = os.path.join(directorio_base,"requisitos.txt")

@@ -24,6 +24,7 @@ def realizaPosteo(dirImagen, descripcion):
             
             if 'id' in data:
                 id_post = data["id"]
+                
                 return{
                     "exito_post": True,
                     "mensaje_estado": f"Publicacion exitosa id: {id_post}\n Imagen: {dirImagen}"
@@ -33,6 +34,12 @@ def realizaPosteo(dirImagen, descripcion):
                     "exito_post": False,
                     "mensaje_estado": "No se recibio id de publicacion, aunque el consumo de la api de meta fue exitosa"
                 }
+        else:
+            data_err = response.json()
+            return {
+                "exito_post": False,
+                "mensaje_estado": f'Comunicacion no exitosa:\n {data_err["error"]["message"]}'
+            }
     
     except FileNotFoundError as fne:
         print(fne)

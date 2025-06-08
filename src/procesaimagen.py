@@ -27,7 +27,8 @@ def mueveImagen(origen, destino):
             "mensaje": "imagen procesada no encontrada"
         }
     except Exception as e:
+        print(e)
         return{
             "movida": False,
-            "mensaje": "error al mover imagen procesada"
+            "mensaje": "error al mover imagen procesada "
         }

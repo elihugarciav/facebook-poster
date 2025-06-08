@@ -10,7 +10,7 @@ load_dotenv()
 key = os.getenv("google_api_key")
 modelo_empleado = os.getenv("modelo_gemini")
 
-def generaDescIma(nombre_imagen):
+def generaDescIma(nombre_imagen, prompt):
     gemini.configure(api_key=key)
     model = gemini.GenerativeModel(modelo_empleado)
     #base = pathlib.Path(__file__).parent
@@ -18,7 +18,7 @@ def generaDescIma(nombre_imagen):
 
     imagen = PIL.Image.open(pathlib.Path(nombre_imagen))
 
-    prompt = "Eres un community manager que conoce mucho de pokemon. Dame una sola descripción para post de Facebook de esta imagen lista para su publicacion"
+    #prompt = "Eres un community manager que conoce mucho de pokemon. Dame una sola descripción para post de Facebook de esta imagen lista para su publicacion"
     try:
         response = model.generate_content([prompt, imagen])
         if response.text:
