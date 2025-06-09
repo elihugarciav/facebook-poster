@@ -5,6 +5,7 @@ import venv
 import platform
 import notificaErrores
 import pathlib
+import argparse
 
 directorio_base = pathlib.Path(__file__).parent.parent
 VENV_DIRECTORIO = ".fb_poster"
@@ -13,9 +14,12 @@ def crearAmbiente():
     venv.create(VENV_DIRECTORIO, with_pip=True)
     notificaErrores.notificaExito(titulo="Ambiente", mensaje="Ambiente virtual creado con exito")
 
-def ejecutarAmbiente():
+def ejecutarAmbiente(modoEjecucion):
     if platform.system() == "Windows":
-        python_bin = os.path.join(VENV_DIRECTORIO, "Scripts", "python.exe")
+        if modoEjecucion:
+            python_bin = os.path.join(VENV_DIRECTORIO, "Scripts", "pythonw.exe")
+        else:
+            python_bin = os.path.join(VENV_DIRECTORIO, "Scripts", "python.exe")
     else:
         python_bin = os.path.join(VENV_DIRECTORIO, "bin", "python")
     print(python_bin)
@@ -30,6 +34,12 @@ def ejecutarAmbiente():
     subprocess.check_call([python_bin, "interfaz.py"])
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--sinconsola", action="store_true", help="Ejecuta la app en segundo plano sin print a consola")
+    args = parser.parse_args()
     if not os.path.exists(VENV_DIRECTORIO):
         crearAmbiente()
-    ejecutarAmbiente()
+    if args.sinconsola:
+        ejecutarAmbiente(True)
+    else:
+        ejecutarAmbiente(False)
